@@ -47,7 +47,6 @@ export default function RegisterProviderForm() {
 				label="Nome Fantasia"
 				name="name"
 				autoComplete="name"
-				autoFocus
 				value={formik.values.name}
 				onChange={formik.handleChange}
 				onBlur={formik.handleBlur}
@@ -63,7 +62,6 @@ export default function RegisterProviderForm() {
 				label="Razão Social"
 				name="officialRegistry"
 				autoComplete="officialRegistry"
-				autoFocus
 				value={formik.values.officialRegistry}
 				onChange={formik.handleChange}
 				onBlur={formik.handleBlur}
@@ -79,7 +77,6 @@ export default function RegisterProviderForm() {
 				label="CNPJ"
 				name="cnpj"
 				autoComplete="cnpj"
-				autoFocus
 				value={formik.values.cnpj}
 				onChange={formik.handleChange}
 				onBlur={formik.handleBlur}
@@ -95,7 +92,6 @@ export default function RegisterProviderForm() {
 				label="Segmento"
 				name="segment"
 				autoComplete="segment"
-				autoFocus
 				value={formik.values.segment}
 				onChange={formik.handleChange}
 				onBlur={formik.handleBlur}
@@ -112,7 +108,6 @@ export default function RegisterProviderForm() {
 				label="CEP"
 				name="postalCode"
 				autoComplete="postalCode"
-				autoFocus
 				value={formik.values.postalCode}
 				onChange={formik.handleChange}
 				onBlur={formik.handleBlur}
@@ -128,7 +123,6 @@ export default function RegisterProviderForm() {
 				label="Rua"
 				name="street"
 				autoComplete="street"
-				autoFocus
 				value={formik.values.street}
 				onChange={formik.handleChange}
 				onBlur={formik.handleBlur}
@@ -144,7 +138,6 @@ export default function RegisterProviderForm() {
 				label="Número"
 				name="number"
 				autoComplete="number"
-				autoFocus
 				value={formik.values.number}
 				onChange={formik.handleChange}
 				onBlur={formik.handleBlur}
@@ -159,7 +152,6 @@ export default function RegisterProviderForm() {
 				label="Complemento"
 				name="complement"
 				autoComplete="complement"
-				autoFocus
 				value={formik.values.complement}
 				onChange={formik.handleChange}
 				onBlur={formik.handleBlur}
@@ -176,7 +168,6 @@ export default function RegisterProviderForm() {
 				label="Telefone"
 				name="telephone"
 				autoComplete="telephone"
-				autoFocus
 				value={formik.values.telephone}
 				onChange={formik.handleChange}
 				onBlur={formik.handleBlur}
@@ -192,7 +183,6 @@ export default function RegisterProviderForm() {
 				label="E-Mail"
 				name="email"
 				autoComplete="email"
-				autoFocus
 				value={formik.values.email}
 				onChange={formik.handleChange}
 				onBlur={formik.handleBlur}
