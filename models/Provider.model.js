@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, models } from 'mongoose';
 
 const providerSchema = new Schema({
 	name: { type: String, required: true },
@@ -13,8 +13,6 @@ const providerSchema = new Schema({
 	},
 	telephone: { type: String, required: true },
 	email: { type: String, required: true },
-});
+}, { timestamps: true });
 
-const Provider = model('Provider', providerSchema);
-
-export default Provider;
+export default models.Provider || model('Provider', providerSchema);
