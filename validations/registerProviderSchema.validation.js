@@ -15,7 +15,8 @@ const registerProviderSchema = yup.object({
         .string()
         .trim()
         .min(14, 'Ao menos 14 caracteres')
-        .max(18, 'No máximo 18 caracteres'),
+        .max(18, 'No máximo 18 caracteres')
+        .required('Campo obrigatório'),
     segment: yup
         .string()
         .trim()
