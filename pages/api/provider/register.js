@@ -8,11 +8,12 @@ import dbConnect from '../../../middleware/db.middleware';
 const handler = nc();
 handler.use(helmet()).post(async (req, res) => {
 	try {
-		console.log(req.body)
 		await insertProvider(req.body);
-		res.status(201).json({ message: 'Fornecedor cadastrado com sucesso!' });
+		return res
+			.status(201)
+			.json({ message: 'Fornecedor cadastrado com sucesso!' });
 	} catch (error) {
-		res.status(error.status).json(new AppError(error));
+		return res.status(error.status).json(new AppError(error));
 	}
 });
 
