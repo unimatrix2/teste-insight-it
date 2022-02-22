@@ -23,7 +23,6 @@ export const insertProvider = async (provider) => {
 		throw new AppError({
 			message: 'Ocorreu um erro ao criar o fornecedor, tente novamente mais tarde',
 			type: 'Provider-Create-Repository',
-			status: 500
 		});
 	}
 }
