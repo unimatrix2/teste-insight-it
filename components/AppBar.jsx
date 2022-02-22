@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Link from 'next/link';
 
 export default function MainAppBar() {
 	return (
@@ -13,7 +14,9 @@ export default function MainAppBar() {
 					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 						Dashboard de Fornecedores
 					</Typography>
-					<Button color="inherit">Login</Button>
+					<Link href='/'>
+						<Button color="inherit">Página Inicial</Button>
+					</Link>
 				</Toolbar>
 			</AppBar>
 		</Box>
