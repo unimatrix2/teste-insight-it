@@ -10,7 +10,6 @@ import { registerProvider } from '../../services/Provider.service';
 import registerProviderSchema from '../../validations/registerProviderSchema.validation';
 
 function RegisterProviderForm({ snack }) {
-
 	const formik = useFormik({
 		initialValues: {
 			name: '',
@@ -22,16 +21,12 @@ function RegisterProviderForm({ snack }) {
 			number: '',
 			complement: '',
 			telephone: '',
-			email: ''
+			email: '',
 		},
 		validationSchema: registerProviderSchema,
 		onSubmit: async (values, helpers) => {
-			await registerProvider(
-				values,
-				helpers,
-				snack
-			);
-		}
+			await registerProvider(values, helpers, snack);
+		},
 	});
 
 	return (
@@ -39,13 +34,12 @@ function RegisterProviderForm({ snack }) {
 			<Typography variant="h2" align="center">
 				Cadastro de Fornecedor
 			</Typography>
-			<form
-				onSubmit={formik.handleSubmit}
-				noValidate
-			>
+			<form onSubmit={formik.handleSubmit} noValidate>
 				<Grid container spacing={2}>
 					<Grid item xs={12}>
-						<Typography variant="h4" align='center'>Dados Básicos</Typography>
+						<Typography variant="h4" align="center">
+							Dados Básicos
+						</Typography>
 						<Grid container spacing={2}>
 							<Grid item xs={6}>
 								<TextField
@@ -88,163 +82,180 @@ function RegisterProviderForm({ snack }) {
 								/>
 							</Grid>
 							<Grid item xs={6}>
-							<TextField
-							variant="outlined"
-							margin="normal"
-							required
-							fullWidth
-							id="cnpj"
-							label="CNPJ"
-							name="cnpj"
-							autoComplete="cnpj"
-							value={formik.values.cnpj}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							helperText={formik.touched.cnpj && formik.errors.cnpj}
-							error={formik.touched.cnpj && Boolean(formik.errors.cnpj)}
-						/>
+								<TextField
+									variant="outlined"
+									margin="normal"
+									required
+									fullWidth
+									id="cnpj"
+									label="CNPJ"
+									name="cnpj"
+									autoComplete="cnpj"
+									value={formik.values.cnpj}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									helperText={formik.touched.cnpj && formik.errors.cnpj}
+									error={formik.touched.cnpj && Boolean(formik.errors.cnpj)}
+								/>
 							</Grid>
 							<Grid item xs={6}>
-							<TextField
-							variant="outlined"
-							margin="normal"
-							required
-							fullWidth
-							id="segment"
-							label="Segmento"
-							name="segment"
-							autoComplete="segment"
-							value={formik.values.segment}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							helperText={formik.touched.segment && formik.errors.segment}
-							error={formik.touched.segment && Boolean(formik.errors.segment)}
-						/>
+								<TextField
+									variant="outlined"
+									margin="normal"
+									required
+									fullWidth
+									id="segment"
+									label="Segmento"
+									name="segment"
+									autoComplete="segment"
+									value={formik.values.segment}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									helperText={formik.touched.segment && formik.errors.segment}
+									error={
+										formik.touched.segment && Boolean(formik.errors.segment)
+									}
+								/>
 							</Grid>
 						</Grid>
 					</Grid>
 					<Grid item xs={12}>
-						<Typography variant="h4" align='center'>Contato</Typography>
+						<Typography variant="h4" align="center">
+							Contato
+						</Typography>
 						<Grid container spacing={2}>
 							<Grid item xs={6}>
-							<TextField
-							variant="outlined"
-							margin="normal"
-							required
-							fullWidth
-							id="telephone"
-							label="Telefone"
-							name="telephone"
-							autoComplete="telephone"
-							value={formik.values.telephone}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							helperText={formik.touched.telephone && formik.errors.telephone}
-							error={
-								formik.touched.telephone && Boolean(formik.errors.telephone)
-							}
-						/>
+								<TextField
+									variant="outlined"
+									margin="normal"
+									required
+									fullWidth
+									id="telephone"
+									label="Telefone"
+									name="telephone"
+									autoComplete="telephone"
+									value={formik.values.telephone}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									helperText={
+										formik.touched.telephone && formik.errors.telephone
+									}
+									error={
+										formik.touched.telephone && Boolean(formik.errors.telephone)
+									}
+								/>
 							</Grid>
 							<Grid item xs={6}>
-							<TextField
-							variant="outlined"
-							margin="normal"
-							required
-							fullWidth
-							id="email"
-							label="E-Mail"
-							name="email"
-							autoComplete="email"
-							value={formik.values.email}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							helperText={formik.touched.email && formik.errors.email}
-							error={formik.touched.email && Boolean(formik.errors.email)}
-						/>
+								<TextField
+									variant="outlined"
+									margin="normal"
+									required
+									fullWidth
+									id="email"
+									label="E-Mail"
+									name="email"
+									autoComplete="email"
+									value={formik.values.email}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									helperText={formik.touched.email && formik.errors.email}
+									error={formik.touched.email && Boolean(formik.errors.email)}
+								/>
 							</Grid>
 						</Grid>
-						
-						
 					</Grid>
 					<Grid item xs={12}>
-						<Typography variant="h4" align='center'>Endereço</Typography>
+						<Typography variant="h4" align="center">
+							Endereço
+						</Typography>
 						<Grid container spacing={2}>
 							<Grid item xs={12}>
-							<TextField
-							variant="outlined"
-							margin="normal"
-							required
-							fullWidth
-							id="street"
-							label="Rua"
-							name="street"
-							autoComplete="street"
-							value={formik.values.street}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							helperText={formik.touched.street && formik.errors.street}
-							error={formik.touched.street && Boolean(formik.errors.street)}
-						/>
+								<TextField
+									variant="outlined"
+									margin="normal"
+									required
+									fullWidth
+									id="street"
+									label="Rua"
+									name="street"
+									autoComplete="street"
+									value={formik.values.street}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									helperText={formik.touched.street && formik.errors.street}
+									error={formik.touched.street && Boolean(formik.errors.street)}
+								/>
 							</Grid>
 							<Grid item xs={4}>
-							<TextField
-							variant="outlined"
-							margin="normal"
-							required
-							fullWidth
-							id="number"
-							label="Número"
-							name="number"
-							autoComplete="number"
-							value={formik.values.number}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							helperText={formik.touched.number && formik.errors.number}
-							error={formik.touched.number && Boolean(formik.errors.number)}
-						/>
+								<TextField
+									variant="outlined"
+									margin="normal"
+									required
+									fullWidth
+									id="number"
+									label="Número"
+									name="number"
+									autoComplete="number"
+									value={formik.values.number}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									helperText={formik.touched.number && formik.errors.number}
+									error={formik.touched.number && Boolean(formik.errors.number)}
+								/>
 							</Grid>
 							<Grid item xs={4}>
-							<TextField
-							variant="outlined"
-							margin="normal"
-							fullWidth
-							id="complement"
-							label="Complemento"
-							name="complement"
-							autoComplete="complement"
-							value={formik.values.complement}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							helperText={formik.touched.complement && formik.errors.complement}
-							error={
-								formik.touched.complement && Boolean(formik.errors.complement)
-							}
-						/>
+								<TextField
+									variant="outlined"
+									margin="normal"
+									fullWidth
+									id="complement"
+									label="Complemento"
+									name="complement"
+									autoComplete="complement"
+									value={formik.values.complement}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									helperText={
+										formik.touched.complement && formik.errors.complement
+									}
+									error={
+										formik.touched.complement &&
+										Boolean(formik.errors.complement)
+									}
+								/>
 							</Grid>
 							<Grid item xs={4}>
-							<TextField
-							variant="outlined"
-							margin="normal"
-							required
-							fullWidth
-							id="postalCode"
-							label="CEP"
-							name="postalCode"
-							autoComplete="postalCode"
-							value={formik.values.postalCode}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							helperText={formik.touched.postalCode && formik.errors.postalCode}
-							error={
-								formik.touched.postalCode && Boolean(formik.errors.postalCode)
-							}
-						/>
+								<TextField
+									variant="outlined"
+									margin="normal"
+									required
+									fullWidth
+									id="postalCode"
+									label="CEP"
+									name="postalCode"
+									autoComplete="postalCode"
+									value={formik.values.postalCode}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									helperText={
+										formik.touched.postalCode && formik.errors.postalCode
+									}
+									error={
+										formik.touched.postalCode &&
+										Boolean(formik.errors.postalCode)
+									}
+								/>
 							</Grid>
 						</Grid>
 					</Grid>
 				</Grid>
 				<Fab
-					type="submit" color="primary" variant='extended' component={Button} sx={{ marginLeft: '80%' }}>
+					type="submit"
+					color="primary"
+					variant="extended"
+					component={Button}
+					sx={{ marginLeft: '80%' }}
+				>
 					Cadastrar Fornecedor
 				</Fab>
 			</form>
