@@ -8,6 +8,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 
+import searchProviderSchema from '../../validations/searchProviderSchema.validation';
+
 export default function ProviderSearchDialogForm({ open, toggle }) {
 
     const router = useRouter();
@@ -17,6 +19,7 @@ export default function ProviderSearchDialogForm({ open, toggle }) {
         initialValues: {
             cnpj: ''
         },
+				validationSchema: searchProviderSchema,
         onSubmit: (values) => {
 					router.push(`/provider/${values.cnpj}`);
 					handleClose();
@@ -44,6 +47,8 @@ export default function ProviderSearchDialogForm({ open, toggle }) {
 						value={formik.values.cnpj}
 						onChange={formik.handleChange}
 						onBlur={formik.handleBlur}
+						helperText={formik.touched.cnpj && formik.errors.cnpj}
+						error={formik.touched.cnpj && Boolean(formik.errors.cnpj)}
 					/>
 						</form>
 				</DialogContent>
