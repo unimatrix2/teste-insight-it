@@ -15,43 +15,6 @@ import { withSnackBar } from '../../components/SnackBar';
 import { Typography } from '@mui/material';
 import { formatCNPJ, formatTEL, formatCEP } from '../../util/formatData';
 
-const rows = [
-	{
-	address: {
-	postalCode: "01230000",
-	street: "Judas Botas",
-	number: "15",
-	complement: "60A"
-	},
-	_id: "621540ad0744c61177986b69",
-	name: "Web Development Bootcamp",
-	officialRegistry: "Irjsfnbkjnf",
-	cnpj: "12345678912345",
-	segment: "batata",
-	telephone: "1136665000",
-	email: "ihf@corp.com",
-	__v: 0
-	},
-	{
-	address: {
-	postalCode: "01420000",
-	street: "Rua Bob Marley",
-	number: "420",
-	complement: ""
-	},
-	_id: "6215b6fd19edcc8b1e519385",
-	name: "Farmácia Machamp",
-	officialRegistry: "Machamp Produtos Canábicos S/A",
-	cnpj: "86425435000157",
-	segment: "Farmacêutico",
-	telephone: "11942042042",
-	email: "contato@machamp.com",
-	createdAt: "2022-02-23T04:24:29.208Z",
-	updatedAt: "2022-02-23T04:24:29.208Z",
-	__v: 0
-	}
-	];
-
 function ListProvider({ snack }) {
 	const [isLoading, setIsLoading] = useState(true);
 	const [providers, setProviders] = useState();
