@@ -1,5 +1,6 @@
 import instance from '../util/axiosInstance';
 import registerProviderMapper from '../mappers/registerProviderMapper';
+import AppError from '../error/AppError';
 
 export const registerProvider = async (provider, helpers, snack) => {
 	try {
@@ -26,6 +27,23 @@ export const getProvider = async (provider) => {
 		const { data } = await instance.get(`/provider/${provider}`);
 		return data;
 	} catch (error) {
-		console.log(error.response)
+		throw new AppError({
+			message: error.response.data.message,
+			type: error.response.data.type,
+			status: error.response.data.status
+		});
+	}
+}
+
+export const getAllProviders = async () => {
+	try {
+		const { data } = await instance.get('/provider/list');
+		return data;
+	} catch (error) {
+		throw new AppError({
+			message: error.response.data.message,
+			type: error.response.data.type,
+			status: error.response.data.status
+		});
 	}
 }
