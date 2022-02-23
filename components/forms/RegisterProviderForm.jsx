@@ -1,15 +1,19 @@
 import { useFormik } from 'formik';
-import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
-import { Typography, Container } from '@mui/material';
-import TextField from '@mui/material/TextField';
 import { Fab } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import { useRouter } from 'next/router';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 import { withSnackBar } from '../SnackBar';
 import { registerProvider } from '../../services/Provider.service';
 import registerProviderSchema from '../../validations/registerProviderSchema.validation';
 
 function RegisterProviderForm({ snack }) {
+	const router = useRouter();
+
 	const formik = useFormik({
 		initialValues: {
 			name: '',
@@ -26,6 +30,7 @@ function RegisterProviderForm({ snack }) {
 		validationSchema: registerProviderSchema,
 		onSubmit: async (values, helpers) => {
 			await registerProvider(values, helpers, snack);
+			router.push(`/provider/${values.cnpj}`);
 		},
 	});
 
