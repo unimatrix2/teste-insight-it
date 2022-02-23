@@ -42,7 +42,24 @@ function DisplayProvider({ snack }) {
 		}
 	}
 
-	
+	if (!isLoading && !provider) return (
+		<>
+			<MainAppBar />
+			<Container sx={classes.container}>
+			<Card sx={classes.card} elevation={8}>
+      <CardHeader
+        title='Fornecedor não encontrado'
+        subheader={formatCNPJ('00000000000000')}
+      />
+      <CardContent>
+        <Typography variant='body2' color='text.secondary'>
+          {'Não foi encontrado nenhum fornecedor com esse CNPJ'}
+        </Typography>
+      </CardContent>
+    </Card>
+			</Container>
+		</>
+	)
 
 	return !isLoading ? (
 		<>
