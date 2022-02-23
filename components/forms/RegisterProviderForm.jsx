@@ -176,7 +176,7 @@ function RegisterProviderForm({ snack }) {
 									required
 									fullWidth
 									id="street"
-									label="Rua"
+									label="Rua/Avenida/Praça"
 									name="street"
 									autoComplete="street"
 									value={formik.values.street}
