@@ -20,3 +20,12 @@ export const registerProvider = async (provider, helpers, snack) => {
 		);
 	}
 }
+
+export const getProvider = async (provider) => {
+	try {
+		const { data } = await instance.get(`/provider/${provider}`);
+		return data;
+	} catch (error) {
+		console.log(error.response)
+	}
+}
