@@ -8,7 +8,9 @@ npm i
 # ou
 yarn install
 ```
-de dentro do repositório.
+## Antes de Prosseguir
+
+O arquivo ```next.config.js``` contém a URL para conexão com a base de dados MongoDB. Por padrão, a URL está apontando para um servidor local (localhost), para acessar um servidor externo, será necessário inserir a URL desejada no campo ```mongodburl```
 
 ## Ambiente de Desenvolvimento
 
