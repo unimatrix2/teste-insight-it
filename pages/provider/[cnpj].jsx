@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import useSWR from 'swr';
 import Card from '@mui/material/Card';
 import { useRouter } from 'next/router';
 import { grey } from '@mui/material/colors';
@@ -17,19 +18,20 @@ function DisplayProvider({ snack }) {
 	const router = useRouter();
 	const [provider, setProvider] = useState();
 	const [isLoading, setIsLoading] = useState(true);
-
+	
 	const { cnpj } = router.query;
-	useEffect(() => {
-		if (!cnpj) return;
-		getProvider(cnpj)
-			.then((data) => {
-				setProvider(data);
-				setIsLoading(false);
-			})
-			.catch((err) => {
-				snack(err.message, 'error');
-			});
-	}, [cnpj, snack]);
+	const { data, error } = useSWR(cnpj, getProvider);
+	if (data && !provider) {
+		setProvider(data);
+		setIsLoading(false);
+	}
+	if (error && isLoading) {
+		setIsLoading(false);
+		snack(
+			error.message,
+			'error'
+		);
+	}
 
 	const classes = {
 		container: {
