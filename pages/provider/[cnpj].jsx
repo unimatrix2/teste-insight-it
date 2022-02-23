@@ -21,12 +21,15 @@ function DisplayProvider({ snack }) {
 	const { cnpj } = router.query;
 	useEffect(() => {
 		if (!cnpj) return;
-		getProvider(cnpj).then((data) => {
-			setProvider(data);
-			setIsLoading(false);
-		}).catch(err => {
-			snack(err.message, 'error');
-	})}, [cnpj, snack])
+		getProvider(cnpj)
+			.then((data) => {
+				setProvider(data);
+				setIsLoading(false);
+			})
+			.catch((err) => {
+				snack(err.message, 'error');
+			});
+	}, [cnpj, snack]);
 
 	const classes = {
 		container: {
@@ -39,51 +42,60 @@ function DisplayProvider({ snack }) {
 			width: 600,
 			height: 300,
 			backgroundColor: grey[400],
-		}
-	}
+		},
+	};
 
-	if (!isLoading && !provider) return (
-		<>
-			<MainAppBar />
-			<Container sx={classes.container}>
-			<Card sx={classes.card} elevation={8}>
-      <CardHeader
-        title='Fornecedor não encontrado'
-        subheader={formatCNPJ('00000000000000')}
-      />
-      <CardContent>
-        <Typography variant='body2' color='text.secondary'>
-          {'Não foi encontrado nenhum fornecedor com esse CNPJ'}
-        </Typography>
-      </CardContent>
-    </Card>
-			</Container>
-		</>
-	)
+	if (!isLoading && !provider)
+		return (
+			<>
+				<MainAppBar />
+				<Container sx={classes.container}>
+					<Card sx={classes.card} elevation={8}>
+						<CardHeader
+							title="Fornecedor não encontrado"
+							subheader={formatCNPJ(cnpj)}
+						/>
+						<CardContent>
+							<Typography variant="body2" color="text.secondary">
+								{'Não foi encontrado nenhum fornecedor com esse CNPJ'}
+							</Typography>
+						</CardContent>
+					</Card>
+				</Container>
+			</>
+		);
 
 	return !isLoading ? (
 		<>
 			<MainAppBar />
 			<Container sx={classes.container}>
-			<Card sx={classes.card} elevation={8}>
-      <CardHeader
-        title={provider.name}
-        subheader={formatCNPJ(provider.cnpj)}
-      />
-      <CardContent>
-        <Typography variant='body2' color='text.secondary'>
-          {`${provider.address.street}, ${provider.address.number} - ${provider.address.complement} - ${formatCEP(provider.address.postalCode)}`}
-        </Typography>
-				<br/>
-				<Typography variant='body1'>Razão social: {provider.officialRegistry}</Typography>
-				<br/><br/><br/>
-				<Typography>Telefone: {formatTEL(provider.telephone)}</Typography>
-				<Typography>Email: {provider.email}</Typography>
-      </CardContent>
-    </Card>
+				<Card sx={classes.card} elevation={8}>
+					<CardHeader
+						title={provider.name}
+						subheader={formatCNPJ(provider.cnpj)}
+					/>
+					<CardContent>
+						<Typography variant="body2" color="text.secondary">
+							{`${provider.address.street}, ${provider.address.number} - ${
+								provider.address.complement
+							} - ${formatCEP(provider.address.postalCode)}`}
+						</Typography>
+						<br />
+						<Typography variant="body1">
+							Razão social: {provider.officialRegistry}
+						</Typography>
+						<br />
+						<br />
+						<br />
+						<Typography>Telefone: {formatTEL(provider.telephone)}</Typography>
+						<Typography>Email: {provider.email}</Typography>
+					</CardContent>
+				</Card>
 			</Container>
 		</>
-	) : <LoadingCardSkeleton />
+	) : (
+		<LoadingCardSkeleton />
+	);
 }
 
 export default withSnackBar(DisplayProvider);
