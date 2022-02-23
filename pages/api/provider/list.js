@@ -8,10 +8,10 @@ import dbConnect from '../../../middleware/db.middleware';
 const handler = nc();
 handler.use(helmet()).get(async (req, res) => {
 	try {
-		const provider = await getAllProviders(req.query.cnpj);
+		const providers = await getAllProviders();
 		return res
 			.status(201)
-			.json(provider);
+			.json(providers);
 	} catch (error) {
 		return res.status(error.status).json(new AppError(error));
 	}
