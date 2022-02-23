@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import { useRouter } from 'next/router';
+import { grey } from '@mui/material/colors';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import CardHeader from '@mui/material/CardHeader';
@@ -11,7 +12,6 @@ import { withSnackBar } from '../../components/SnackBar';
 import { getProvider } from '../../services/Provider.service';
 import LoadingCardSkeleton from '../../components/LoadingCardSkeleton';
 import { formatCNPJ, formatTEL, formatCEP } from '../../util/formatData';
-import { grey } from '@mui/material/colors';
 
 function DisplayProvider({ snack }) {
 	const router = useRouter();
