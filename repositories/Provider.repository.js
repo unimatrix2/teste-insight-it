@@ -26,3 +26,15 @@ export const insertProvider = async (provider) => {
 		});
 	}
 }
+
+export const searchProvider = async (provider) => {
+	try {
+		const providerFromDb = await Provider.findOne({ cnpj: provider});
+		if (!providerFromDb) throw new AppError({
+			message: 'Fornecedor não encontrado!',
+			type: 'Provider-Search-Repository',
+			status: 404
+		})
+		return providerFromDb;
+	} catch (error) { throw new AppError(error); }
+}
