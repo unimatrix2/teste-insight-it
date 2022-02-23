@@ -38,3 +38,17 @@ export const searchProvider = async (provider) => {
 		return providerFromDb;
 	} catch (error) { throw new AppError(error); }
 }
+
+export const getAllProviders = async () => {
+	try {
+		const providers = await Provider.find({});
+		if (!providers) throw new AppError({
+			message: 'Não há fornecedores cadastrados!',
+			type: 'Provider-GetAll-Repository',
+			status: 404
+		})
+		return providers;
+	} catch (error) {
+		throw new AppError(error);
+	}
+}
